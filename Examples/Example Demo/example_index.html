@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logo Detection Demo</title>
+</head>
+<body>
+  <h1>Upload an Image to Detect Logos</h1>
+  <form id="upload-form" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required />
+    <button type="submit">Detect</button>
+  </form>
+  <ul id="results"></ul>
+
+  <script>
+    document.getElementById('upload-form').onsubmit = async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const res = await fetch('/detect', { method: 'POST', body: form });
+      const data = await res.json();
+      const list = document.getElementById('results');
+      list.innerHTML = '';
+      if (data.logos.length === 0) {
+        list.innerHTML = '<li>No logos found</li>';
+      } else {
+        data.logos.forEach(l => {
+          const li = document.createElement('li');
+          li.textContent = `${l.description} (score: ${l.score.toFixed(2)})`;
+          list.appendChild(li);
+        });
+      }
+    };
+  </script>
+</body>
+</html>
