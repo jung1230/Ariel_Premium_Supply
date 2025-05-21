@@ -9,7 +9,8 @@ HTML, PHP, etc.
 */
 
 // request access to the live camera(pending)
-navigator.mediaDevices.getUserMedia({ video: true }) // this is a promise
+// navigator.mediaDevices.getUserMedia({video: true }) // this is a promise // this works for windows
+navigator.mediaDevices.getUserMedia({video: { facingMode: "environment" }}) // this is a promise // this works for mobile
 // fulfilled promise(returns CameraView, and it will be a video stream)
 .then(function(CameraView){ //function is like def in python
     const video = document.getElementById('UserView');
@@ -17,14 +18,16 @@ navigator.mediaDevices.getUserMedia({ video: true }) // this is a promise
     video.srcObject = CameraView;
 
     const button = document.getElementById('UserButton');
-    const canvas = document.getElementById('UserPhoto');
-    const OutputText = document.getElementById('apiOutput');
-    const Instructions = document.getElementById('Instructions');
-    const image1 = document.getElementById('1stImg');
-    const image2 = document.getElementById('2ndImg');
-    const image3 = document.getElementById('3rdImg');
+
     //if the button is clicked
     button.addEventListener('click', function(){
+        const canvas = document.getElementById('UserPhoto');
+        const OutputText = document.getElementById('apiOutput');
+        const Instructions = document.getElementById('Instructions');
+        const image1 = document.getElementById('1stImg');
+        const image2 = document.getElementById('2ndImg');
+        const image3 = document.getElementById('3rdImg');
+
         // draw the video on the canvas and save it
         const context = canvas.getContext('2d');
 
