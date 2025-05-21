@@ -1,0 +1,24 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <title>Logo Recognizor</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+    <div class="company-badge">
+        <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQFXwuFc7GAnWA/company-logo_200_200/0/1519922163979?e=2159024400&v=beta&t=0zqR1vFqF2q9B1-bInpPqR8gYfGIp1BIP_VeBINRGgM" alt="Company Badge">
+    </div>
+    <div class = container>
+        <!-- set W & H as Var later -->
+        <video id="UserView" width="320" height="320" autoplay></video> <!--ID is like variable name-->
+        <canvas id="UserPhoto" width="320" height="320"></canvas>
+        <button id="UserButton" type="button">Take Photo</button> 
+        <p id="apiOutput">Please click the button to take picture to get result</p>
+        <p id="Instructions"></p>
+        <img id="1stImg" src="" alt="API Result 1" width="320" height="320">
+        <img id="2ndImg" src="" alt="API Result 2" width="320" height="320">
+        <img id="3rdImg" src="" alt="API Result 3" width="320" height="320">
+    </div>
+    <script src="./../static/app.js"></script> 
+</body>
+</html>
